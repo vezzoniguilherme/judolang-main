@@ -1,0 +1,27 @@
+import { motion } from "framer-motion";
+import { scrollToCurrentLesson } from "../../Utils/State/scrollUtils.ts";
+import { ArrowIcon } from "../../Components/Atoms/Icons/ArrowIcon.tsx";
+import { useIsElementVisible } from "../../Effects/Observers/useIsElementVisible.tsx";
+
+type ScrollToLessonButtonProps = {
+  rootRef: any;
+  currentLessonRef: any;
+};
+
+export function ScrollToLessonButton({
+  currentLessonRef,
+}: ScrollToLessonButtonProps) {
+  const visibility = useIsElementVisible(currentLessonRef);
+  const showDownArrow = visibility.position == "above";
+
+  return (
+    <motion.button
+      initial={{ opacity: 0 }}
+      animate={{ opacity: !visibility.isVisible ? 1 : 0 }}
+      className="fixed bottom-24 hover:cursor-pointer z-200 lg:bottom-10 2xl:right-190 lg:right-95 xl:right-120 right-4 border-3 bg-mainDark shadow-mainShadow  border-mainAccent rounded-2xl p-3"
+      onClick={() => scrollToCurrentLesson(currentLessonRef)}
+    >
+      <ArrowIcon isUp={showDownArrow} />
+    </motion.button>
+  );
+}

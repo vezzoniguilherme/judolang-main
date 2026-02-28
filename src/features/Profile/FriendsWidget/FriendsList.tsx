@@ -1,0 +1,23 @@
+import type { friendsTabType } from "../../../Types/Enum/friendsTabType.ts";
+import { UserRow } from "../../Common/UserRow.tsx";
+import { motion, AnimatePresence } from "framer-motion";
+import { fadeInStagger } from "../../../Effects/FadeInAnimation.ts";
+type FriendsListProps = {
+  activeTab: friendsTabType;
+  toDisplay: number[];
+};
+
+export function FriendsList({ toDisplay }: FriendsListProps) {
+  return (
+    <AnimatePresence>
+      <motion.div
+        {...fadeInStagger(1)}
+        className="w-full flex scrollbar-mainAccent overflow-y-auto max-h-160 my-2 px-4 flex-col"
+      >
+        {toDisplay.map((userId) => (
+          <UserRow key={userId} userId={userId} />
+        ))}
+      </motion.div>
+    </AnimatePresence>
+  );
+}

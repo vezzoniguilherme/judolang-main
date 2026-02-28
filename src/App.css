@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "DIN";
+  src: url("/fonts/DIN Next Rounded LT W04 Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DIN";
+  src: url("/fonts/DIN Next Rounded LT W04 Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@layer utilities {
+  .scrollbar-main {
+    scrollbar-width: thin;
+    scrollbar-color: #303966 transparent;
+  }
+
+  .scrollbar-blue::-webkit-scrollbar {
+    width: 4px;
+    height: 8px;
+  }
+
+  .scrollbar-blue::-webkit-scrollbar-thumb {
+    background-color: #58cc04;
+    border-radius: 4px;
+  }
+
+  .scrollbar-blue::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@theme {
+  --color-duoGrayText: #52656d;
+
+  --color-duoGrayButtonText: #53656d;
+
+  --color-main: #303966;
+  --color-mainDark: #22273e;
+  --color-mainAccent: #c1adff;
+  --color-mainAlt: #3a426c;
+  --color-darkGreen: #59a601;
+
+  --color-duoGrayLocked: #37464f;
+  --color-duoGrayBorder: #37464f;
+  --color-duoSubText: #d0f0c1;
+  --color-duoGold: #ffd401;
+  --color-duoLightGray: #adaeae;
+  --color-duoGold: #fec700;
+  --color-duoRed: #ff4c4b;
+
+  --font-din: DIN;
+
+  --shadow-mainShadow: 0 5px 0 #262e57;
+  --shadow-mainCircleShadow: 0 8px 0 #262e57;
+
+  --shadow-duoGrayLockedShadow: 0 8px 0 #2b383f;
+  --shadow-duoGrayLockedCircleShadow: 0 5px 0 #2b383f;
+  --shadow-duoGrayBorderShadow: 0 3px #37464f;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.bob {
+  animation: bob 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+:root {
+  --font-display: "Satoshi", "sans-serif";
+  --breakpoint-3xl: 1920px;
+  --color-avocado-100: oklch(0.99 0 0);
+  --color-avocado-200: oklch(0.98 0.04 113.22);
+  --color-avocado-300: oklch(0.94 0.11 115.03);
+  --color-avocado-400: oklch(0.92 0.19 114.08);
+  --color-avocado-500: oklch(0.84 0.18 117.33);
+  --color-avocado-600: oklch(0.53 0.12 118.34);
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100dvw;
+  background: #141f24;
+  overscroll-behavior: contain;
+  font-family: DIN;
+  font-weight: 700;
+}

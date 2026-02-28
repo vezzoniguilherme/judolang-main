@@ -1,0 +1,21 @@
+import type { ReactNode } from "react";
+
+type FooterProps = {
+  children: ReactNode;
+  padding?: string;
+  height?: string;
+};
+
+export function Footer({
+  children,
+  padding = "px-2",
+  height = "h-14",
+}: FooterProps) {
+  return (
+    <footer
+      className={`lg:hidden w-full absolute bottom-0 bg-mainDark flex justify-between z-40 items-center ${height} ${padding}`}
+    >
+      {children}
+    </footer>
+  );
+}

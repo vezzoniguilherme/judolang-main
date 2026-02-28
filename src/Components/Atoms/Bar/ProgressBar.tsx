@@ -1,0 +1,48 @@
+type ProgressBarProps = {
+  completed: number;
+  total: number;
+  barColor?: string;
+  bgColor?: string;
+  textColor?: string;
+  showCountText?: boolean;
+  showGoldOnComplete?: boolean;
+  icon?: string;
+};
+
+export function ProgressBar({
+  completed,
+  total,
+  barColor = "bg-mainAccent/70",
+  textColor = "text-duoLightGray",
+  showCountText,
+  showGoldOnComplete,
+  icon,
+}: ProgressBarProps) {
+  const isComplete = completed >= total;
+
+  const progressPercentage = !isComplete ? (completed / total) * 100 : 100;
+
+  const barColorToShow =
+    showGoldOnComplete && completed == total ? "bg-mainAccent" : barColor;
+  const textColorToShow =
+    showGoldOnComplete && completed == total ? "text-mainDark" : textColor;
+
+  return (
+    <div className="w-full relative">
+      <div
+        className={`w-full rounded-full flex items-center justify-center bg-mainAlt h-5 overflow-hidden`}
+      >
+        <div
+          className={`absolute ${barColorToShow} left-0 top-0 h-full transition-all duration-300 rounded-full`}
+          style={{ width: `${progressPercentage}%` }}
+        />
+        {showCountText && (
+          <p className={`relative ${textColorToShow} z-8 mr-5`}>
+            {completed} / {total}
+          </p>
+        )}
+      </div>
+      {icon && <img className="absolute -right-2 -bottom-1 h-9" src={icon} />}
+    </div>
+  );
+}
