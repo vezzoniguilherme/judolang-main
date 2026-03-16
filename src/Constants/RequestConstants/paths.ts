@@ -1,7 +1,7 @@
 //export const API_URL = "http://localhost:";
 //export const API_PORT = "8080";
 
-export const API_URL = import.meta.env.VITE_API_URL!;
+export const API_URL = "";
 
 export const API_PREFIX = "/api";
 
