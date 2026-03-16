@@ -1,31 +1,25 @@
-
 export async function getData<T>(
   path: string,
-  credentials: boolean = false,
+  credentials: boolean = true,
   name: string = ""
 ): Promise<T> {
-
   const res = await fetch(path, {
-    credentials: credentials ? "include" : "same-origin",
+    credentials: "include",
   });
-
   if (!res.ok) throw new Error("Failed to fetch " + name);
   return res.json() as Promise<T>;
 }
-
 export async function submitData<TResponse, TBody = unknown>(
   path: string,
   body: TBody | null,
-  credentials = false
+  credentials = true
 ): Promise<TResponse> {
   const res = await fetch(path, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    credentials: credentials ? "include" : "same-origin",
+    credentials: "include",
     body: JSON.stringify(body),
   });
-
   if (!res.ok) throw new Error(`Failed POST ${path} → ${res.status}`);
   return res.json() as Promise<TResponse>;
 }
-
