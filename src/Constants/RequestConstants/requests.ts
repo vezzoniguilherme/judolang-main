@@ -1,6 +1,6 @@
 export async function getData<T>(
   path: string,
-  credentials: boolean = true,
+  _credentials: boolean = true,
   name: string = ""
 ): Promise<T> {
   const res = await fetch(path, {
@@ -9,10 +9,11 @@ export async function getData<T>(
   if (!res.ok) throw new Error("Failed to fetch " + name);
   return res.json() as Promise<T>;
 }
+
 export async function submitData<TResponse, TBody = unknown>(
   path: string,
   body: TBody | null,
-  credentials = true
+  _credentials = true
 ): Promise<TResponse> {
   const res = await fetch(path, {
     method: "POST",
