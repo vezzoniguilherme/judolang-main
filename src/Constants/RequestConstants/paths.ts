@@ -1,8 +1,6 @@
-//export const API_URL = "http://localhost:";
-//export const API_PORT = "8080";
-export const API_URL = "";
+import { API_URL } from "../env";
+
 export const API_PREFIX = "/api";
-//export const API_PATH = API_URL + API_PORT + API_PREFIX;
 export const API_PATH = API_URL + API_PREFIX;
 // -------------------------------------------------------- //
 export const GET_LESSONS_BY_UNIT = (unitId: number) =>
