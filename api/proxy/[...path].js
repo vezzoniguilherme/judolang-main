@@ -1,21 +1,27 @@
 export default async function handler(req, res) {
   const path = req.url.replace('/api/proxy', '');
-  const url = `https://judokapro-backend.onrender.com/api${path}`;
+  const url = `https://api.judokapro.com.br/api${path}`;
   
-  const response = await fetch(url, {
+  const fetchOptions = {
     method: req.method,
     headers: {
       'Content-Type': 'application/json',
       'Cookie': req.headers.cookie || '',
     },
-    body: req.method !== 'GET' ? JSON.stringify(req.body) : undefined,
-  });
+  };
 
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    fetchOptions.body = JSON.stringify(req.body);
+  }
+
+  const response = await fetch(url, fetchOptions);
   const data = await response.text();
   
   response.headers.forEach((value, key) => {
-    res.setHeader(key, value);
+    if (key.toLowerCase() !== 'transfer-encoding') {
+      res.setHeader(key, value);
+    }
   });
   
   res.status(response.status).send(data);
-} 
+}
