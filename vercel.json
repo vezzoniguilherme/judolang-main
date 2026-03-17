@@ -1,11 +1,6 @@
 {
-  "functions": {
-    "_api/proxy/[...path].js": {
-      "memory": 128
-    }
-  },
   "rewrites": [
-    { "source": "/proxy/:path*", "destination": "/_api/proxy/[...path].js" },
+    { "source": "/proxy/:path*", "destination": "/api/proxy/[...path]" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
