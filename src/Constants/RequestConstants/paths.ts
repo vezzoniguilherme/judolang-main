@@ -1,7 +1,7 @@
 //export const API_URL = "http://localhost:";
 //export const API_PORT = "8080";
 export const API_URL = "";
-export const API_PREFIX = "/api/proxy";
+export const API_PREFIX = "/proxy";
 //export const API_PATH = API_URL + API_PORT + API_PREFIX;
 export const API_PATH = API_URL + API_PREFIX;
 // -------------------------------------------------------- //
