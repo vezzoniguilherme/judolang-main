@@ -3,7 +3,7 @@
 
 export const API_URL = "";
 
-export const API_PREFIX = "/backend";
+export const API_PREFIX = "/proxy";
 
 //export const API_PATH = API_URL + API_PORT + API_PREFIX;
 
